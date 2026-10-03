@@ -77,6 +77,9 @@ const buildHomeContent = (sections: SectionMap, faq: readonly FaqItem[]): HomeCo
   };
 };
 
+/** Local-only content (no network). Used until remote content is wired in. */
+export const getFallbackHomeContent = (): HomeContent => buildHomeContent({}, []);
+
 /** Never throws: any failed source falls back to local content. */
 export const getHomeContent = async (): Promise<HomeContent> => {
   const [contentResult, faqResult] = await Promise.allSettled([

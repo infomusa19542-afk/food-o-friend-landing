@@ -24,6 +24,8 @@ export const AppStrings = {
     openMenu: "Open menu",
     closeMenu: "Close menu",
     mainLabel: "Main navigation",
+    footerLabel: "Footer navigation",
+    legalLabel: "Legal",
   },
 
   hero: {
@@ -33,19 +35,33 @@ export const AppStrings = {
     description:
       "Food o Friend helps you meet new people and share meals based on your interests, location and vibe.",
     waitlistButton: "Join Waitlist",
-    imageAlt: "Friends sharing a meal together at a restaurant table",
+    imageAlt: "Friends laughing and sharing pizza together at a restaurant",
   },
 
   socialProof: {
     text: "food lovers already joined the waitlist",
+    // Phase 2 visual placeholder — replaced by the live `get_waitlist_count` value in Phase 3.
+    placeholderCount: "500+",
   },
 
-  features: [
-    { title: "Meet Real People" },
-    { title: "Share Amazing Meals" },
-    { title: "Discover Your City" },
-    { title: "Build Meaningful Connections" },
-  ],
+  features: {
+    people: {
+      title: "Meet Real People",
+      description: "Find food friends with similar interests and tastes.",
+    },
+    meals: {
+      title: "Share Amazing Meals",
+      description: "Dine in together, try new places, explore cuisines.",
+    },
+    city: {
+      title: "Discover Your City",
+      description: "Explore hidden gems and local favourites.",
+    },
+    connections: {
+      title: "Build Meaningful Connections",
+      description: "Turn meals into lasting friendships.",
+    },
+  },
 
   problem: {
     eyebrow: "THE PROBLEM",
@@ -66,6 +82,8 @@ export const AppStrings = {
   },
 
   howItWorks: {
+    eyebrow: "HOW IT WORKS",
+    handwritten: ["Good Food", "Great People", "Happier You"],
     title: "Simple Steps to Meet Food Friends",
     steps: [
       {
@@ -87,7 +105,7 @@ export const AppStrings = {
     eyebrow: "YOUR SAFETY COMES FIRST",
     title: "A Safe and Respectful Community",
     items: [
-      "Your personal information is always private",
+      "Your personal info is always private",
       "Meetups are based on age group and interests",
       "You control what you share and when",
       "We promote a respectful and healthy environment",
@@ -107,14 +125,23 @@ export const AppStrings = {
   },
 
   footer: {
+    socialLabel: "Follow Food O Friend",
     privacy: "Privacy Policy",
     terms: "Terms of Service",
     copyright: (year: number) => `© ${year} Food O Friend. All rights reserved.`,
   },
 
+  social: {
+    instagram: "Instagram",
+    tiktok: "TikTok",
+    facebook: "Facebook",
+    youtube: "YouTube",
+    x: "X",
+  },
+
   forms: {
     emailLabel: "Email address",
-    emailPlaceholder: "Enter your email",
+    emailPlaceholder: "Enter your email address",
     nameLabel: "Name",
     namePlaceholder: "Your name",
     submitting: "Submitting...",

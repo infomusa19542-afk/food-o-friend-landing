@@ -2,14 +2,16 @@ import Link from "next/link";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/utils/classnames";
 
-type ButtonVariant = "primary" | "outline" | "ghost";
+type ButtonVariant = "primary" | "dark" | "outline" | "ghost";
 type ButtonSize = "md" | "lg";
+type ButtonShape = "pill" | "rounded";
 
 const BASE =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-full font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex min-h-11 items-center justify-center gap-2 font-semibold whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:cursor-not-allowed disabled:opacity-60";
 
 const VARIANTS: Record<ButtonVariant, string> = {
   primary: "bg-brand text-white hover:bg-brand-hover",
+  dark: "bg-ink text-white hover:bg-charcoal-soft",
   outline: "border border-brand text-brand hover:bg-brand hover:text-white",
   ghost: "text-current hover:text-brand",
 };
@@ -19,36 +21,42 @@ const SIZES: Record<ButtonSize, string> = {
   lg: "px-7 py-3.5 text-base",
 };
 
+const SHAPES: Record<ButtonShape, string> = {
+  pill: "rounded-full",
+  rounded: "rounded-lg",
+};
+
 interface SharedProps {
   children: ReactNode;
   variant?: ButtonVariant;
   size?: ButtonSize;
+  shape?: ButtonShape;
   className?: string;
 }
 
-type LinkButtonProps = SharedProps & { href: string };
+type LinkButtonProps = SharedProps & { href: string; onClick?: () => void };
 type NativeButtonProps = SharedProps &
   Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof SharedProps> & { href?: undefined };
 
 export type AppButtonProps = LinkButtonProps | NativeButtonProps;
 
-const buttonClasses = (variant: ButtonVariant = "primary", size: ButtonSize = "md", className?: string) =>
-  cn(BASE, VARIANTS[variant], SIZES[size], className);
+const buttonClasses = ({ variant = "primary", size = "md", shape = "pill", className }: SharedProps) =>
+  cn(BASE, VARIANTS[variant], SIZES[size], SHAPES[shape], className);
 
 /** Renders a Next.js `Link` when `href` is given, otherwise a native `<button>`. */
 export default function AppButton(props: AppButtonProps) {
   if (props.href !== undefined) {
-    const { href, children, variant, size, className } = props;
+    const { href, children, onClick } = props;
     return (
-      <Link href={href} className={buttonClasses(variant, size, className)}>
+      <Link href={href} onClick={onClick} className={buttonClasses(props)}>
         {children}
       </Link>
     );
   }
 
-  const { children, variant, size, className, type = "button", ...rest } = props;
+  const { children, variant, size, shape, className, type = "button", ...rest } = props;
   return (
-    <button type={type} className={buttonClasses(variant, size, className)} {...rest}>
+    <button type={type} className={buttonClasses({ children, variant, size, shape, className })} {...rest}>
       {children}
     </button>
   );

@@ -33,5 +33,14 @@ export const AppConfig = {
     textMaxLength: 500,
   },
 
+  // Placeholder profile URLs until the official accounts are live.
+  social: {
+    instagram: "https://www.instagram.com/",
+    tiktok: "https://www.tiktok.com/",
+    facebook: "https://www.facebook.com/",
+    youtube: "https://www.youtube.com/",
+    x: "https://x.com/",
+  },
+
   locale: "en-US",
 } as const;
