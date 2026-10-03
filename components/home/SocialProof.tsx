@@ -1,13 +1,14 @@
 import Image from "next/image";
+import WaitlistCountLabel from "@/components/home/WaitlistCountLabel";
 import { AppAssets } from "@/constants/app_assets";
 import { getAssetUrl } from "@/lib/storage";
+import type { WaitlistCountCopy } from "@/utils/formatters";
 
 interface SocialProofProps {
-  count: string;
-  text: string;
+  copy: WaitlistCountCopy;
 }
 
-export default function SocialProof({ count, text }: SocialProofProps) {
+export default function SocialProof({ copy }: SocialProofProps) {
   return (
     <div className="flex items-center gap-4">
       <div className="flex shrink-0 -space-x-3">
@@ -23,9 +24,7 @@ export default function SocialProof({ count, text }: SocialProofProps) {
           />
         ))}
       </div>
-      <p className="max-w-[14rem] text-sm leading-snug text-white/85">
-        <span className="font-semibold text-white">{count}</span> {text}
-      </p>
+      <WaitlistCountLabel copy={copy} />
     </div>
   );
 }

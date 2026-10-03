@@ -15,17 +15,16 @@ export interface SiteContentRow {
   content: unknown;
 }
 
-/** Raw row shape of `faq_items`. */
+/** Raw row shape of `faq_items`. Fields are re-validated before use. */
 export interface FaqItemRow {
   id: number;
-  question: string;
-  answer: string;
+  question: unknown;
+  answer: unknown;
   sort_order: number | null;
-  is_active: boolean;
 }
 
 export interface FaqItem {
-  id: number;
+  id: number | string;
   question: string;
   answer: string;
 }

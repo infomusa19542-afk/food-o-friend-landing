@@ -1,6 +1,7 @@
 import { AppConfig } from "@/constants/app_config";
 import { AppStrings } from "@/constants/app_strings";
 import type { WaitlistInput, WaitlistInsert } from "@/models/waitlist.model";
+import { isRecord } from "@/utils/parsers";
 
 // Pragmatic email check: local@domain.tld, no whitespace. The database layer validates too.
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -24,6 +25,18 @@ export const validateEmail = (rawEmail: string): string | null => {
   if (email.length > AppConfig.validation.emailMaxLength) return AppStrings.validation.emailTooLong;
   if (!isValidEmail(email)) return AppStrings.validation.emailInvalid;
   return null;
+};
+
+const asString = (value: unknown): string => (typeof value === "string" ? value : "");
+
+/** Coerces an untrusted payload (e.g. Server Action argument) into a WaitlistInput. */
+export const parseWaitlistInput = (value: unknown): WaitlistInput => {
+  const record = isRecord(value) ? value : {};
+  return {
+    email: asString(record.email),
+    name: asString(record.name),
+    website: asString(record.website),
+  };
 };
 
 export const isHoneypotFilled = (value: string | undefined): boolean => Boolean(value?.trim());

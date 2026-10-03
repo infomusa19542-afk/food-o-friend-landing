@@ -1,9 +1,9 @@
 import Link from "next/link";
-import AppButton from "@/components/common/AppButton";
 import BrandLogo from "@/components/common/BrandLogo";
 import Container from "@/components/common/Container";
 import MobileMenu from "@/components/layout/MobileMenu";
-import { ActiveNavHref, MainNavItems, WaitlistHref } from "@/constants/app_navigation";
+import WaitlistLinkButton from "@/components/layout/WaitlistLinkButton";
+import { ActiveNavHref, MainNavItems } from "@/constants/app_navigation";
 import { AppStrings } from "@/constants/app_strings";
 import { cn } from "@/utils/classnames";
 
@@ -42,9 +42,9 @@ export default function Header() {
 
         <div className="flex items-center gap-2">
           <div className="hidden sm:block">
-            <AppButton href={WaitlistHref} shape="rounded" className="px-6">
+            <WaitlistLinkButton shape="rounded" className="px-6">
               {navigation.joinWaitlist}
-            </AppButton>
+            </WaitlistLinkButton>
           </div>
           <MobileMenu />
         </div>

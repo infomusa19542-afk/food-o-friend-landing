@@ -4,20 +4,28 @@ import SectionTitle from "@/components/common/SectionTitle";
 import WaitlistForm from "@/components/common/WaitlistForm";
 import SocialProof from "@/components/home/SocialProof";
 import { AppAssets } from "@/constants/app_assets";
+import { AppConfig } from "@/constants/app_config";
 import { SectionIds } from "@/constants/app_routes";
 import { AppStrings } from "@/constants/app_strings";
 import { getAssetUrl } from "@/lib/storage";
 import type { HeroContent, SocialProofContent } from "@/models/site-content.model";
+import type { WaitlistCountCopy } from "@/utils/formatters";
 
 const { background, handwritten } = AppAssets.hero;
 
 interface HeroSectionProps {
   content: HeroContent;
   socialProof: SocialProofContent;
-  waitlistCount: string;
 }
 
-export default function HeroSection({ content, socialProof, waitlistCount }: HeroSectionProps) {
+export default function HeroSection({ content, socialProof }: HeroSectionProps) {
+  const countCopy: WaitlistCountCopy = {
+    plural: socialProof.text,
+    singular: AppStrings.socialProof.textSingular,
+    empty: AppStrings.socialProof.empty,
+    unavailable: AppStrings.socialProof.unavailable,
+  };
+
   return (
     <section id={SectionIds.home} className="relative isolate overflow-hidden bg-ink">
       {/* Banner on mobile so text never sits on faces; full-bleed background from lg. */}
@@ -59,8 +67,8 @@ export default function HeroSection({ content, socialProof, waitlistCount }: Her
               </>
             }
           />
-          <WaitlistForm id="hero-waitlist-email" buttonText={content.waitlistButton} className="max-w-[30rem]" />
-          <SocialProof count={waitlistCount} text={socialProof.text} />
+          <WaitlistForm id={AppConfig.waitlist.inputIds.hero} buttonText={content.waitlistButton} className="max-w-[30rem]" />
+          <SocialProof copy={countCopy} />
         </div>
       </Container>
     </section>

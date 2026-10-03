@@ -17,6 +17,7 @@ app/ (routes)  →  components/ (view)  ←  controllers/  →  services/  →  
 | `components/layout/` | `Header`, `MobileMenu`, `Footer`. | |
 | `components/home/` | One file per homepage section. | Remotely editable copy arrives via props typed by `models/site-content.model.ts`. |
 | `components/registration/`, `components/restaurant-owner/` | Phase 4 forms. | |
+| `actions/` | Next.js Server Actions — thin entry points that parse untrusted input and call a controller. | `"use server"`. No business logic or Supabase calls. |
 | `controllers/` | Orchestrate a use case: validate input, call services, merge fallbacks, map errors to safe `ActionResult`s. | `server-only`. Never return raw Supabase errors. |
 | `services/` | The only place that queries Supabase (tables, RPCs). | `server-only`. One function per query; throw on error. |
 | `models/` | TypeScript shapes for DB rows and domain data. | Types only. |
@@ -36,4 +37,6 @@ app/ (routes)  →  components/ (view)  ←  controllers/  →  services/  →  
 - **Client Components**: only for interactivity (forms, mobile menu). Pages and sections stay Server Components.
 - **Security**: only `NEXT_PUBLIC_SUPABASE_ANON_KEY` is used in app code. Secret/service keys must never be imported into `app/`, `components/`, `lib/`, `services/` or `controllers/`. The waitlist is insert-only for the public key (RLS); counts come from the `get_waitlist_count` RPC.
 - **Errors**: services throw, controllers catch and map to `AppStrings` messages; log with `logSafeError` (no emails or payloads).
-- **Forms**: validate on the client for UX and again in the controller via `utils/validators.ts`. Include the honeypot `website` field for basic spam protection.
+- **Forms**: validate on the client for UX and again in the controller via `utils/validators.ts`. Include the hidden honeypot field (`AppConfig.waitlist.honeypotField`) for basic spam protection.
+- **Data freshness**: `app/page.tsx` uses `revalidate = 60`; successful waitlist signups call `revalidatePath` and update the client count via `WaitlistCountProvider`.
+- **SQL**: one-off database scripts live in `supabase/`.

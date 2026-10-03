@@ -15,4 +15,9 @@ export interface WaitlistInsert {
   source: string;
 }
 
-export type WaitlistResponse = ActionResult;
+export interface WaitlistResultData {
+  /** Fresh total after a successful signup; null when it couldn't be loaded. */
+  count: number | null;
+}
+
+export type WaitlistResponse = ActionResult<WaitlistResultData>;

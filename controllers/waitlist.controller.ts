@@ -6,12 +6,25 @@ import { fetchWaitlistCount, insertWaitlistEntry } from "@/services/waitlist.ser
 import { isUniqueViolation, logSafeError } from "@/utils/errors";
 import { isHoneypotFilled, validateWaitlistInput } from "@/utils/validators";
 
-const SUCCESS: WaitlistResponse = { status: "success", message: AppStrings.waitlist.success };
+/** Returns null when the count is unavailable so the UI can show neutral copy. */
+export const getWaitlistCount = async (): Promise<number | null> => {
+  try {
+    return await fetchWaitlistCount();
+  } catch (error) {
+    logSafeError("waitlist.count", error);
+    return null;
+  }
+};
 
-/** Validates untrusted input and adds it to the waitlist. Never exposes raw DB errors. */
+/**
+ * Validates untrusted input, adds it to the waitlist and returns the fresh count.
+ * Never exposes raw database errors.
+ */
 export const joinWaitlist = async (input: WaitlistInput): Promise<WaitlistResponse> => {
-  // Bots that fill the hidden field get a silent "success" and nothing is stored.
-  if (isHoneypotFilled(input.website)) return SUCCESS;
+  // Bots that fill the hidden field get a friendly response and nothing is stored.
+  if (isHoneypotFilled(input.website)) {
+    return { status: "success", message: AppStrings.waitlist.success, data: { count: null } };
+  }
 
   const validation = validateWaitlistInput(input);
   if (!validation.ok) {
@@ -21,7 +34,6 @@ export const joinWaitlist = async (input: WaitlistInput): Promise<WaitlistRespon
 
   try {
     await insertWaitlistEntry(validation.value);
-    return SUCCESS;
   } catch (error) {
     if (isUniqueViolation(error)) {
       return { status: "duplicate", message: AppStrings.waitlist.duplicate };
@@ -29,14 +41,10 @@ export const joinWaitlist = async (input: WaitlistInput): Promise<WaitlistRespon
     logSafeError("waitlist.join", error);
     return { status: "error", message: AppStrings.errors.generic };
   }
-};
 
-/** Returns null when the count is unavailable so the UI can hide social proof. */
-export const getWaitlistCount = async (): Promise<number | null> => {
-  try {
-    return await fetchWaitlistCount();
-  } catch (error) {
-    logSafeError("waitlist.count", error);
-    return null;
-  }
+  return {
+    status: "success",
+    message: AppStrings.waitlist.success,
+    data: { count: await getWaitlistCount() },
+  };
 };

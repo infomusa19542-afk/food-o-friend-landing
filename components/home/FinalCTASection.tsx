@@ -3,6 +3,7 @@ import Container from "@/components/common/Container";
 import SectionTitle from "@/components/common/SectionTitle";
 import WaitlistForm from "@/components/common/WaitlistForm";
 import { AppAssets } from "@/constants/app_assets";
+import { AppConfig } from "@/constants/app_config";
 import { SectionIds } from "@/constants/app_routes";
 import { getAssetUrl } from "@/lib/storage";
 import type { CtaContent } from "@/models/site-content.model";
@@ -43,7 +44,7 @@ export default function FinalCTASection({ content }: FinalCTASectionProps) {
           className="lg:max-w-2xl"
         />
         <WaitlistForm
-          id="cta-waitlist-email"
+          id={AppConfig.waitlist.inputIds.cta}
           variant="cta"
           buttonText={content.buttonText}
           className="lg:max-w-[28rem]"

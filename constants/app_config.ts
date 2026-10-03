@@ -21,10 +21,18 @@ export const AppConfig = {
     errorCodes: {
       uniqueViolation: "23505",
     },
+    /** Abort slow Supabase requests so the page falls back instead of hanging. */
+    timeoutMs: 8000,
   },
 
   waitlist: {
-    source: "landing_page",
+    source: "website",
+    /** Hidden spam-trap field name. Deliberately not a common autofill name. */
+    honeypotField: "company_site",
+    inputIds: {
+      hero: "hero-waitlist-email",
+      cta: "cta-waitlist-email",
+    },
   },
 
   validation: {

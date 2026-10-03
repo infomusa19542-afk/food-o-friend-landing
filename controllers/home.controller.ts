@@ -29,8 +29,18 @@ const toSteps = (source: JsonRecord): readonly HowItWorksStep[] => {
   return steps.length > 0 ? steps : fallback;
 };
 
-const toFaqItems = (rows: FaqItemRow[]): FaqItem[] =>
-  rows.map(({ id, question, answer }) => ({ id, question, answer }));
+const isNonEmptyString = (value: unknown): value is string =>
+  typeof value === "string" && value.trim().length > 0;
+
+/** Drops malformed rows; falls back to local FAQs when nothing usable remains. */
+const toFaqItems = (rows: FaqItemRow[]): readonly FaqItem[] => {
+  const items = rows.flatMap(({ id, question, answer }) =>
+    isNonEmptyString(question) && isNonEmptyString(answer)
+      ? [{ id, question: question.trim(), answer: answer.trim() }]
+      : [],
+  );
+  return items.length > 0 ? items : AppStrings.faq.fallbackItems;
+};
 
 /** Merges remote `site_content` values over local fallbacks from AppStrings. */
 const buildHomeContent = (sections: SectionMap, faq: readonly FaqItem[]): HomeContent => {
@@ -77,9 +87,6 @@ const buildHomeContent = (sections: SectionMap, faq: readonly FaqItem[]): HomeCo
   };
 };
 
-/** Local-only content (no network). Used until remote content is wired in. */
-export const getFallbackHomeContent = (): HomeContent => buildHomeContent({}, []);
-
 /** Never throws: any failed source falls back to local content. */
 export const getHomeContent = async (): Promise<HomeContent> => {
   const [contentResult, faqResult] = await Promise.allSettled([
@@ -91,7 +98,7 @@ export const getHomeContent = async (): Promise<HomeContent> => {
   if (faqResult.status === "rejected") logSafeError("home.faq", faqResult.reason);
 
   const sections = contentResult.status === "fulfilled" ? toSectionMap(contentResult.value) : {};
-  const faq = faqResult.status === "fulfilled" ? toFaqItems(faqResult.value) : [];
+  const faq = toFaqItems(faqResult.status === "fulfilled" ? faqResult.value : []);
 
   return buildHomeContent(sections, faq);
 };

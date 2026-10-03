@@ -76,6 +76,14 @@ const ICONS = {
       <path d="m12 5 7 7-7 7" />
     </>
   ),
+  check: <path d="M20 6 9 17l-5-5" />,
+  alertCircle: (
+    <>
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 8v4M12 16h.01" />
+    </>
+  ),
+  plus: <path d="M5 12h14M12 5v14" />,
   menu: <path d="M4 6h16M4 12h16M4 18h16" />,
   close: <path d="M18 6 6 18M6 6l12 12" />,
   instagram: (

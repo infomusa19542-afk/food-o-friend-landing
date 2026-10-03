@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
-import AppButton from "@/components/common/AppButton";
 import Container from "@/components/common/Container";
 import Icon from "@/components/common/Icon";
-import { ActiveNavHref, MainNavItems, WaitlistHref } from "@/constants/app_navigation";
+import WaitlistLinkButton from "@/components/layout/WaitlistLinkButton";
+import { ActiveNavHref, MainNavItems } from "@/constants/app_navigation";
 import { AppStrings } from "@/constants/app_strings";
 import { cn } from "@/utils/classnames";
 
@@ -66,9 +66,9 @@ export default function MobileMenu() {
             </li>
           ))}
           <li className="pt-3 sm:hidden">
-            <AppButton href={WaitlistHref} onClick={close} size="lg" className="w-full">
+            <WaitlistLinkButton onClick={close} size="lg" className="w-full">
               {navigation.joinWaitlist}
-            </AppButton>
+            </WaitlistLinkButton>
           </li>
         </Container>
       </nav>

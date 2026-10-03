@@ -39,9 +39,11 @@ export const AppStrings = {
   },
 
   socialProof: {
+    /** Plural form; remotely editable via `site_content.social_proof.text`. */
     text: "food lovers already joined the waitlist",
-    // Phase 2 visual placeholder — replaced by the live `get_waitlist_count` value in Phase 3.
-    placeholderCount: "500+",
+    textSingular: "food lover already joined the waitlist",
+    empty: "Be the first food lover to join the waitlist",
+    unavailable: "Join food lovers on the waitlist",
   },
 
   features: {
@@ -121,7 +123,35 @@ export const AppStrings = {
   },
 
   faq: {
+    eyebrow: "FAQ",
     title: "Frequently Asked Questions",
+    description: "Everything you need to know before your first Food O Friend meetup.",
+    /** Shown when `faq_items` is empty or unavailable. */
+    fallbackItems: [
+      {
+        id: "what-is-food-o-friend",
+        question: "What is Food O Friend?",
+        answer:
+          "Food o Friend helps you meet new people and share meals based on your interests, location and vibe.",
+      },
+      {
+        id: "when-launch",
+        question: "When will Food O Friend launch?",
+        answer:
+          "We're preparing for launch now. Join the waitlist and you'll be among the first to know when meetups open in your city.",
+      },
+      {
+        id: "waitlist-cost",
+        question: "Does it cost anything to join the waitlist?",
+        answer: "No. Joining the waitlist is free and only needs your email address.",
+      },
+      {
+        id: "safety",
+        question: "How do you keep meetups safe?",
+        answer:
+          "Your personal info stays private, meetups are based on age group and interests, and you control what you share and when.",
+      },
+    ],
   },
 
   footer: {
@@ -144,11 +174,12 @@ export const AppStrings = {
     emailPlaceholder: "Enter your email address",
     nameLabel: "Name",
     namePlaceholder: "Your name",
-    submitting: "Submitting...",
+    submitting: "Joining...",
+    honeypotLabel: "Leave this field empty",
   },
 
   waitlist: {
-    success: "You're on the list! We'll be in touch soon.",
+    success: "You're on the waitlist!",
     duplicate: "You're already on the waitlist.",
   },
 
