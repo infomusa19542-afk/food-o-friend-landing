@@ -62,6 +62,7 @@ Run once in the Supabase SQL Editor (all scripts are idempotent):
 1. `supabase/user_registrations.sql`
 2. `supabase/restaurant_owners.sql`
 3. `supabase/faq_items_seed.sql` (optional — local FAQ fallbacks show until rows exist)
-4. `supabase/verify_public_access.sql` (read-only check)
+4. `supabase/idea_screens.sql`, then `supabase/idea_screens_seed.sql` (content for `/idea`; the page uses local fallback copy until these exist)
+5. `supabase/verify_public_access.sql` and `supabase/idea_screens_verify.sql` (read-only checks)
 
 The `waitlist`, `site_content` and `faq_items` tables, the `get_waitlist_count` RPC and the public `site-assets` Storage bucket already exist in the project.

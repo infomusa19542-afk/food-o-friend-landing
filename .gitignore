@@ -36,3 +36,4 @@ next-env.d.ts
 site-assets/
 uploaded_urls.json
 .env.local
+idea_uploaded_urls.json

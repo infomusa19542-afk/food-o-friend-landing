@@ -16,5 +16,7 @@ export const AppColors = {
   white: "#ffffff",
   muted: "#9b9b9b",
   placeholder: "#737373",
+  skeletonLight: "#ece7df",
+  skeletonDark: "#262626",
   textDark: "#1a1a1a",
 } as const;

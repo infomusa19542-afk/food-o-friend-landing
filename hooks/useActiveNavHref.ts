@@ -1,9 +1,12 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { ActiveNavHref } from "@/constants/app_navigation";
+import { ActiveNavHref, MainNavItems } from "@/constants/app_navigation";
 import { AppRoutes } from "@/constants/app_routes";
 
-/** Homepage section links are only "current" while on the homepage. */
-export const useActiveNavHref = (): string | null =>
-  usePathname() === AppRoutes.home ? ActiveNavHref : null;
+/** "Home" is current on the homepage; standalone pages (e.g. /idea) highlight their own link. */
+export const useActiveNavHref = (): string | null => {
+  const pathname = usePathname();
+  if (pathname === AppRoutes.home) return ActiveNavHref;
+  return MainNavItems.find((item) => item.href === pathname)?.href ?? null;
+};

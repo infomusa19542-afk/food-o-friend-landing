@@ -1,4 +1,5 @@
 import { AppLegalStrings } from "@/constants/app_legal_strings";
+import type { IdeaJourneyKey } from "@/constants/app_idea_content";
 import type { AgeRange, FoodInterest, MeetupType, SocialInterest, YesNoValue } from "@/constants/app_options";
 
 /**
@@ -194,6 +195,48 @@ export const AppStrings = {
     facebook: "Facebook",
     youtube: "YouTube",
     x: "X",
+  },
+
+  idea: {
+    metadata: {
+      title: "The Idea",
+      description:
+        "See how Food O Friend brings people together through shared meals, from discovering a group dinner to meeting new people and settling the bill together.",
+    },
+    hero: {
+      eyebrow: "THE IDEA",
+      title: "From a shared table",
+      titleAccent: "to new friendships",
+      description:
+        "Take a look inside the Food O Friend app — from finding a group dinner nearby to meeting new people and settling the bill together.",
+      disclaimer: "These are design previews of the app we're building, so details may change before launch.",
+    },
+    journeys: {
+      account_onboarding: {
+        eyebrow: "STEP 1",
+        description: "Getting started takes a few screens: what Food O Friend is, how your privacy works and setting up your account.",
+      },
+      discover_profile: {
+        eyebrow: "STEP 2",
+        description: "Find group meals near you, check the details before you join, and keep track of your meetups and the people you meet.",
+      },
+      meetup: {
+        eyebrow: "STEP 3",
+        description: "From reserving a seat to meeting the group and splitting the bill — every step of a Food O Friend meetup.",
+      },
+    } satisfies Record<IdeaJourneyKey, { eyebrow: string; description: string }>,
+    carousel: {
+      screen: "Screen",
+      actionsHeading: "What you can do",
+      noteLabel: "Still being finalised",
+      previous: "Previous screen",
+      next: "Next screen",
+      pagination: "Choose a screen",
+      goTo: (number: number, title: string) => `Show screen ${number}: ${title}`,
+      position: (current: number, total: number, title: string) => `Screen ${current} of ${total}: ${title}`,
+      keyboardHint: "Use the left and right arrow keys to move between screens.",
+      previewUnavailable: "Preview unavailable",
+    },
   },
 
   registration: {

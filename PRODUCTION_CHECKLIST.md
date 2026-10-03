@@ -9,6 +9,7 @@ Status as of the Phase 5 audit (4 October 2026). `[x]` = verified, `[ ]` = still
 - [x] `/restaurant-owner` — restaurant partnership page and form
 - [x] `/privacy` — Privacy Policy
 - [x] `/terms` — Terms of Service
+- [x] `/idea` — product walkthrough: 3 carousels (6 + 6 + 12 app screens) from `idea_screens`, local fallback
 - [x] Branded 404 (`app/not-found.tsx`, returns HTTP 404, `noindex`)
 - [x] Friendly error state (`app/error.tsx`, no error details shown)
 - [x] One `h1` per page, no skipped heading levels, no browser console errors
@@ -33,6 +34,7 @@ Automated headless-Chrome sweep of every route (including 404) — **zero horizo
 - [x] `user_registrations` — `supabase/user_registrations.sql`, unique email, CHECK constraints mirror app validation
 - [x] `restaurant_owners` — `supabase/restaurant_owners.sql`, unique (email, lower(restaurant_name))
 - [x] `get_waitlist_count` RPC
+- [ ] `idea_screens` — run `supabase/idea_screens.sql` then `supabase/idea_screens_seed.sql` (public read of active rows only)
 - [ ] Optional: run `supabase/faq_items_seed.sql` (or add FAQs in the dashboard) so FAQs come from Supabase
 
 ## RLS

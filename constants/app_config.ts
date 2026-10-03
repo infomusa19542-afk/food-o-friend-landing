@@ -7,6 +7,8 @@ export const AppConfig = {
 
   storage: {
     bucket: "site-assets",
+    /** App screenshots for the /idea page. */
+    ideaBucket: "idea-assets",
   },
 
   /**
@@ -27,6 +29,7 @@ export const AppConfig = {
       faqItems: "faq_items",
       userRegistrations: "user_registrations",
       restaurantOwners: "restaurant_owners",
+      ideaScreens: "idea_screens",
     },
     rpc: {
       waitlistCount: "get_waitlist_count",

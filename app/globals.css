@@ -14,10 +14,24 @@
   --color-cream: #faf6f0;
   --color-muted: #9b9b9b;
   --color-placeholder: #737373;
+  --color-skeleton-light: #ece7df;
+  --color-skeleton-dark: #262626;
   --color-text-dark: #1a1a1a;
   --color-text-soft: #5c5c5c;
 
   --container-content: 80rem;
+
+  /* Skeleton loaders: a soft highlight sweeping across a placeholder. */
+  --animate-shimmer: shimmer 1.6s linear infinite;
+
+  @keyframes shimmer {
+    from {
+      background-position: 150% 0;
+    }
+    to {
+      background-position: -50% 0;
+    }
+  }
 }
 
 @theme inline {

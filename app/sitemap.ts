@@ -4,6 +4,7 @@ import { absoluteUrl } from "@/lib/site";
 
 const PAGES: { path: string; priority: number }[] = [
   { path: AppRoutes.home, priority: 1 },
+  { path: AppRoutes.idea, priority: 0.8 },
   { path: AppRoutes.register, priority: 0.7 },
   { path: AppRoutes.restaurantOwner, priority: 0.7 },
   { path: AppRoutes.privacy, priority: 0.3 },

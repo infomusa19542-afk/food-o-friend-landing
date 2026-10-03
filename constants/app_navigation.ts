@@ -7,7 +7,7 @@ const { navigation, footer, social } = AppStrings;
 
 export const MainNavItems: readonly NavItem[] = [
   { label: navigation.home, href: toSectionHref(SectionIds.home) },
-  { label: navigation.idea, href: toSectionHref(SectionIds.idea) },
+  { label: navigation.idea, href: AppRoutes.idea },
   { label: navigation.howItWorks, href: toSectionHref(SectionIds.howItWorks) },
   { label: navigation.safety, href: toSectionHref(SectionIds.safety) },
   { label: navigation.faq, href: toSectionHref(SectionIds.faq) },

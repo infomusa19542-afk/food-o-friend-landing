@@ -17,6 +17,7 @@ app/ (routes)  →  components/ (view)  ←  controllers/  →  services/  →  
 | `components/layout/` | `Header`, `DesktopNav`, `MobileMenu`, `WaitlistLinkButton`, `Footer` — rendered once in `app/layout.tsx` for every page. | Nav links are absolute (`/#section`) so they work from any route. |
 | `components/home/` | One file per homepage section. | Remotely editable copy arrives via props typed by `models/site-content.model.ts`. |
 | `components/registration/`, `components/restaurant-owner/`, `components/legal/` | Page-specific forms and sections. | |
+| `components/idea/` | `/idea` page: `IdeaJourneySection` (server) + reusable `IdeaCarousel` (client, receives already-fetched screens). | Content comes from `idea_screens` via `controllers/idea.controller.ts`, with `constants/app_idea_content.ts` as fallback. |
 | `components/seo/`, `components/brand/` | JSON-LD structured data; the chef-hat mark used by generated icons and the Open Graph image. | |
 | `hooks/` | Client hooks: `useServerForm` (shared submit flow for every form), `useActiveNavHref`. | |
 | `actions/` | Next.js Server Actions — thin entry points that parse untrusted input and call a controller. | `"use server"`. No business logic or Supabase calls. |
