@@ -1,0 +1,18 @@
+/**
+ * Food O Friend palette.
+ * Tailwind utilities come from the matching `@theme` tokens in app/globals.css —
+ * keep both in sync. Use these values only where CSS classes can't be used
+ * (e.g. metadata theme color).
+ */
+export const AppColors = {
+  ink: "#0b0b0b",
+  charcoal: "#171717",
+  charcoalSoft: "#222222",
+  brand: "#f47a1f",
+  brandHover: "#e0670f",
+  brandTint: "#fff1e5",
+  cream: "#faf6f0",
+  white: "#ffffff",
+  muted: "#9b9b9b",
+  textDark: "#1a1a1a",
+} as const;
