@@ -26,16 +26,16 @@ export type ValidationResult<T> =
 // Normalizers
 // ---------------------------------------------------------------------------
 
-export const normalizeEmail = (email: string): string => email.trim().toLowerCase();
+const normalizeEmail = (email: string): string => email.trim().toLowerCase();
 
-export const isValidEmail = (email: string): boolean => EMAIL_PATTERN.test(email);
+const isValidEmail = (email: string): boolean => EMAIL_PATTERN.test(email);
 
 /** Trims, strips control characters, collapses whitespace. */
-export const sanitizeText = (value: string): string =>
+const sanitizeText = (value: string): string =>
   value.replace(CONTROL_CHARS, "").replace(/\s+/g, " ").trim();
 
 /** Like `sanitizeText` but keeps paragraphs (max one blank line in a row). */
-export const sanitizeMultilineText = (value: string): string =>
+const sanitizeMultilineText = (value: string): string =>
   value
     .replace(/\r\n?/g, "\n")
     .replace(CONTROL_CHARS_EXCEPT_NEWLINE, "")
@@ -82,7 +82,7 @@ export const isHoneypotFilled = (value: string | undefined): boolean => Boolean(
 // Field validation
 // ---------------------------------------------------------------------------
 
-export const validateEmail = (rawEmail: string): string | null => {
+const validateEmail = (rawEmail: string): string | null => {
   const email = normalizeEmail(rawEmail);
   if (!email) return messages.emailRequired;
   if (email.length > limits.emailMaxLength) return messages.emailTooLong;

@@ -6,10 +6,14 @@
   --color-charcoal: #171717;
   --color-charcoal-soft: #222222;
   --color-brand: #f26b1d;
-  --color-brand-hover: #dc5c10;
+  /* Deeper orange for text-bearing surfaces: white text on it, or it as text on light
+     backgrounds, meets WCAG AA (≥ 4.5:1). Keep the vivid --color-brand for accents on dark. */
+  --color-brand-strong: #c24a0b;
+  --color-brand-strong-hover: #a63f09;
   --color-brand-tint: #fde4d0;
   --color-cream: #faf6f0;
   --color-muted: #9b9b9b;
+  --color-placeholder: #737373;
   --color-text-dark: #1a1a1a;
   --color-text-soft: #5c5c5c;
 

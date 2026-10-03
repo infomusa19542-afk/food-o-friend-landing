@@ -34,7 +34,7 @@ export default function HeroSection({ content, socialProof }: HeroSectionProps) 
           src={getAssetUrl(background)}
           alt={AppStrings.hero.imageAlt}
           fill
-          priority
+          preload
           sizes="100vw"
           className="object-cover object-[68%_center] lg:object-[center_30%]"
         />

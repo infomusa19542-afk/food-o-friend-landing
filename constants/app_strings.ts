@@ -14,7 +14,28 @@ export const AppStrings = {
   metadata: {
     title: "Food O Friend — Great Food, Greater Friends",
     description:
-      "Food o Friend helps you meet new people and share meals based on your interests, location and vibe.",
+      "Meet new people through shared food experiences, discover dining meetups, and build meaningful connections around great food.",
+    ogImageAlt: "Food O Friend — Great Food, Greater Friends",
+  },
+
+  notFound: {
+    metadataTitle: "Page Not Found",
+    eyebrow: "404",
+    title: "We couldn't find that page",
+    description: "The page you're looking for doesn't exist or may have moved.",
+    action: "Back to homepage",
+  },
+
+  errorPage: {
+    eyebrow: "SOMETHING WENT WRONG",
+    title: "Sorry, this page didn't load",
+    description: "Please try again. If the problem continues, come back a little later.",
+    retry: "Try again",
+    home: "Back to homepage",
+  },
+
+  accessibility: {
+    skipToContent: "Skip to main content",
   },
 
   navigation: {

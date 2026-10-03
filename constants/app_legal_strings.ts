@@ -50,14 +50,14 @@ const privacy: LegalDocumentCopy = {
     {
       heading: "Where your information is stored",
       paragraphs: [
-        "Form submissions are stored in a database provided by Supabase, which we use as our infrastructure provider. Our database rules let the website add new submissions but don't let website visitors read them back. Access to submitted information is limited to the Food O Friend team.",
+        "Form submissions are stored in a database provided by Supabase, which we use as our infrastructure provider. Our database rules let the website add new submissions but don't let website visitors read them back. Within Food O Friend, only the people running the project can access submitted information.",
         "The website is served by a hosting provider, which may process standard technical information such as IP addresses in server logs in order to deliver and protect the site.",
       ],
     },
     {
       heading: "Cookies and analytics",
       paragraphs: [
-        "The website doesn't currently use analytics, advertising or tracking cookies. If that changes, we'll update this page first.",
+        "The website doesn't currently use cookies, analytics, advertising or third-party tracking scripts. If that changes, we'll update this page first.",
       ],
     },
     {

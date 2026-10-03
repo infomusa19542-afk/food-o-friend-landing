@@ -4,12 +4,13 @@ import FormCard from "@/components/common/FormCard";
 import Icon from "@/components/common/Icon";
 import PageHero from "@/components/common/PageHero";
 import RegistrationForm from "@/components/registration/RegistrationForm";
-import { PageSectionIds } from "@/constants/app_routes";
+import { AppRoutes, PageSectionIds } from "@/constants/app_routes";
 import { AppStrings } from "@/constants/app_strings";
+import { buildPageMetadata } from "@/lib/metadata";
 
 const { registration } = AppStrings;
 
-export const metadata: Metadata = registration.metadata;
+export const metadata: Metadata = buildPageMetadata({ ...registration.metadata, path: AppRoutes.register });
 
 export default function RegisterPage() {
   const { hero, aside } = registration;
@@ -24,7 +25,7 @@ export default function RegisterPage() {
             <ul className="flex flex-col gap-3">
               {aside.items.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-text-soft">
-                  <Icon name="check" className="mt-0.5 size-5 text-brand" />
+                  <Icon name="check" className="mt-0.5 size-5 text-brand-strong" />
                   <span>{item}</span>
                 </li>
               ))}

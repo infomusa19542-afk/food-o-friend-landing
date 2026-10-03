@@ -24,7 +24,8 @@ export default function PageHero({ eyebrow, title, description, image, children 
             src={getAssetUrl(image.asset)}
             alt={image.alt}
             fill
-            priority
+            loading="eager"
+            fetchPriority="high"
             sizes="100vw"
             className="-z-20 object-cover object-[70%_center]"
           />

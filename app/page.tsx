@@ -6,6 +6,7 @@ import HeroSection from "@/components/home/HeroSection";
 import HowItWorksSection from "@/components/home/HowItWorksSection";
 import ProblemSolutionSection from "@/components/home/ProblemSolutionSection";
 import SafetySection from "@/components/home/SafetySection";
+import HomeStructuredData from "@/components/seo/HomeStructuredData";
 import { getHomeContent } from "@/controllers/home.controller";
 import { getWaitlistCount } from "@/controllers/waitlist.controller";
 
@@ -17,6 +18,7 @@ export default async function HomePage() {
 
   return (
     <WaitlistCountProvider initialCount={waitlistCount}>
+      <HomeStructuredData />
       <HeroSection content={content.hero} socialProof={content.socialProof} />
       <FeatureStrip />
       <ProblemSolutionSection problem={content.problem} solution={content.solution} />

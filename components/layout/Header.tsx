@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <header className="absolute inset-x-0 top-0 z-30">
       <Container className="flex h-20 items-center justify-between gap-4 lg:h-24">
-        <BrandLogo priority className="w-[clamp(8.5rem,6rem+8vw,13rem)]" />
+        <BrandLogo eager className="w-[clamp(8.5rem,6rem+8vw,13rem)]" />
         <DesktopNav />
         <div className="flex items-center gap-2">
           <div className="hidden sm:block">

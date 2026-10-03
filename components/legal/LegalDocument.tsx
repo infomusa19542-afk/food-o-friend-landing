@@ -47,7 +47,7 @@ export default function LegalDocument({ copy }: { copy: LegalDocumentCopy }) {
                   {legal.contact.withEmail}{" "}
                   <a
                     href={`mailto:${company.contactEmail}`}
-                    className="font-semibold text-brand underline underline-offset-2 break-all"
+                    className="font-semibold text-brand-strong underline underline-offset-2 break-all"
                   >
                     {company.contactEmail}
                   </a>

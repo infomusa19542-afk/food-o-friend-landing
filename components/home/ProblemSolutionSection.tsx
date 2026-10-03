@@ -47,7 +47,7 @@ export default function ProblemSolutionSection({ problem, solution }: ProblemSol
             alt={AppStrings.solution.imageAlt}
             width={phones.width}
             height={phones.height}
-            sizes="(min-width: 1280px) 400px, (min-width: 640px) 50vw, 90vw"
+            sizes="(min-width: 1280px) 360px, (min-width: 640px) 45vw, 80vw"
             className="mx-auto -mb-6 w-full max-w-[22rem] self-end sm:max-w-none sm:max-w-[26rem] xl:-mt-12 xl:w-[112%] xl:max-w-none"
           />
         </div>

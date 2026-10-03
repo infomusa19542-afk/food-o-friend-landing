@@ -22,10 +22,10 @@ const ALIGN: Record<Align, string> = {
   center: "text-center items-center",
 };
 
-const TONE: Record<Tone, { title: string; description: string }> = {
-  dark: { title: "text-white", description: "text-white/75" },
-  light: { title: "text-text-dark", description: "text-text-soft" },
-  onBrand: { title: "text-white", description: "text-white" },
+const TONE: Record<Tone, { eyebrow: string; title: string; description: string }> = {
+  dark: { eyebrow: "text-brand", title: "text-white", description: "text-white/75" },
+  light: { eyebrow: "text-brand-strong", title: "text-text-dark", description: "text-text-soft" },
+  onBrand: { eyebrow: "text-white", title: "text-white", description: "text-white" },
 };
 
 export default function SectionTitle({
@@ -36,12 +36,12 @@ export default function SectionTitle({
   align = "left",
   tone = "dark",
   titleClassName = "text-heading",
-  eyebrowClassName = "text-brand",
+  eyebrowClassName,
   className,
 }: SectionTitleProps) {
   return (
     <div className={cn("flex flex-col gap-3", ALIGN[align], className)}>
-      {eyebrow && <p className={cn("text-eyebrow", eyebrowClassName)}>{eyebrow}</p>}
+      {eyebrow && <p className={cn("text-eyebrow", eyebrowClassName ?? TONE[tone].eyebrow)}>{eyebrow}</p>}
       <Heading className={cn("font-bold text-balance", TONE[tone].title, titleClassName)}>{title}</Heading>
       {description && (
         <p className={cn("max-w-prose text-base leading-relaxed sm:text-lg", TONE[tone].description)}>

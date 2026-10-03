@@ -35,7 +35,7 @@ export default function SafetySection({ content }: SafetySectionProps) {
           alt=""
           width={handwritten.width}
           height={handwritten.height}
-          sizes="200px"
+          sizes="(min-width: 1024px) 192px, 20vw"
           className="absolute top-[8%] right-[6%] w-[clamp(7.5rem,20vw,12rem)]"
         />
       </div>

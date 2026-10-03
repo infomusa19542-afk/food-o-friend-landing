@@ -10,11 +10,11 @@ const { logo } = AppAssets.branding;
 
 interface BrandLogoProps {
   className?: string;
-  /** Only for the above-the-fold header logo. */
-  priority?: boolean;
+  /** Load immediately — only for the above-the-fold header logo. */
+  eager?: boolean;
 }
 
-export default function BrandLogo({ className, priority = false }: BrandLogoProps) {
+export default function BrandLogo({ className, eager = false }: BrandLogoProps) {
   return (
     <Link
       href={AppRoutes.home}
@@ -28,8 +28,8 @@ export default function BrandLogo({ className, priority = false }: BrandLogoProp
         alt={AppStrings.brand.name}
         width={logo.width}
         height={logo.height}
-        priority={priority}
-        sizes="220px"
+        loading={eager ? "eager" : "lazy"}
+        sizes="208px"
         className="h-auto w-full"
       />
     </Link>

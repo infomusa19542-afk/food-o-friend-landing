@@ -94,7 +94,7 @@ export default function RegistrationForm() {
         label={
           <>
             {fields.consent}{" "}
-            <Link href={AppRoutes.privacy} className="font-semibold text-brand underline underline-offset-2">
+            <Link href={AppRoutes.privacy} className="font-semibold text-brand-strong underline underline-offset-2">
               {legal.privacy.title}
             </Link>
             .

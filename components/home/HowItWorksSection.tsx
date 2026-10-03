@@ -38,7 +38,7 @@ export default function HowItWorksSection({ content }: HowItWorksSectionProps) {
               <div className="flex shrink-0 items-center gap-3">
                 <span
                   aria-hidden="true"
-                  className="inline-flex size-7 items-center justify-center rounded-full bg-brand-tint text-sm font-bold text-brand ring-1 ring-brand/30"
+                  className="inline-flex size-7 items-center justify-center rounded-full bg-white text-sm font-bold text-brand-strong ring-1 ring-brand/30"
                 >
                   {index + 1}
                 </span>

@@ -21,7 +21,7 @@ const VARIANTS: Record<
   { wrapper: string; button: "primary" | "dark"; tones: { success: string; error: string } }
 > = {
   hero: { wrapper: "ring-2 ring-brand", button: "primary", tones: { success: "text-white", error: "text-red-300" } },
-  cta: { wrapper: "shadow-lg shadow-black/10", button: "dark", tones: { success: "text-white", error: "text-ink" } },
+  cta: { wrapper: "shadow-lg shadow-black/10", button: "dark", tones: { success: "text-white", error: "text-white" } },
 };
 
 interface WaitlistFormProps {

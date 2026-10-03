@@ -45,7 +45,7 @@ export default function AppInput({
         {...fieldAria(id, { hint, error })}
         className={cn(
           appearance === "bare"
-            ? "min-h-11 w-full min-w-0 border-0 bg-transparent px-0 py-2 text-base text-text-dark placeholder:text-muted focus-visible:outline-none"
+            ? "min-h-11 w-full min-w-0 border-0 bg-transparent px-0 py-2 text-base text-text-dark placeholder:text-placeholder focus-visible:outline-none"
             : fieldControlClasses(Boolean(error)),
           className,
         )}

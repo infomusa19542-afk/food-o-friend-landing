@@ -11,16 +11,18 @@ import { AppStrings } from "@/constants/app_strings";
 import { getAssetUrl } from "@/lib/storage";
 import type { CtaContent } from "@/models/site-content.model";
 
-const PATTERN_TILE_SIZE = 420;
+const PATTERN_TILE_SIZE = 384;
 const { foodPattern } = AppAssets.decorations;
 
-// Optimized, tile-sized pattern URL for a repeating CSS background.
-const patternUrl = getImageProps({
+// Optimized, tile-sized pattern URL for a repeating CSS background. Uses the 1x candidate:
+// the tile is faint decoration, and line art compresses poorly at 2x (~500 KB vs ~60 KB).
+const { props: patternProps } = getImageProps({
   src: getAssetUrl(foodPattern),
   alt: "",
   width: PATTERN_TILE_SIZE,
   height: PATTERN_TILE_SIZE,
-}).props.src;
+});
+const patternUrl = patternProps.srcSet?.split(", ")[0]?.split(" ")[0] ?? patternProps.src;
 
 interface FinalCTASectionProps {
   content: CtaContent;
@@ -30,7 +32,7 @@ const { cta } = AppStrings;
 
 export default function FinalCTASection({ content }: FinalCTASectionProps) {
   return (
-    <section id={SectionIds.waitlist} className="relative isolate overflow-hidden bg-brand text-white">
+    <section id={SectionIds.waitlist} className="relative isolate overflow-hidden bg-brand-strong text-white">
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-10 opacity-15 brightness-0 invert"
@@ -43,7 +45,6 @@ export default function FinalCTASection({ content }: FinalCTASectionProps) {
         <div className="flex flex-col gap-4 lg:max-w-2xl">
           <SectionTitle
             eyebrow={content.eyebrow}
-            eyebrowClassName="text-white"
             title={content.title}
             description={content.description}
             tone="onBrand"

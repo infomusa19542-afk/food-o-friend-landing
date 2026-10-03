@@ -49,7 +49,7 @@ export default function MobileMenu() {
         id={menuId}
         aria-label={navigation.mainLabel}
         hidden={!isOpen}
-        className="absolute inset-x-0 top-full border-y border-white/10 bg-ink/95 backdrop-blur"
+        className="absolute inset-x-0 top-full max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain border-y border-white/10 bg-ink/95 backdrop-blur"
       >
         <Container as="ul" className="flex flex-col py-3">
           {MainNavItems.map((item) => (

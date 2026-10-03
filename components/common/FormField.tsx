@@ -5,7 +5,7 @@ import { cn } from "@/utils/classnames";
 /** Shared look for text-like controls (input, select, textarea) on light form cards. */
 export const fieldControlClasses = (hasError: boolean) =>
   cn(
-    "min-h-12 w-full min-w-0 rounded-xl border bg-white px-4 py-3 text-base text-text-dark placeholder:text-muted focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand",
+    "min-h-12 w-full min-w-0 rounded-xl border bg-white px-4 py-3 text-base text-text-dark placeholder:text-placeholder focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand",
     hasError ? "border-red-600" : "border-black/15",
   );
 

@@ -8,12 +8,13 @@ import RestaurantBenefitsSection from "@/components/restaurant-owner/RestaurantB
 import RestaurantOwnerForm from "@/components/restaurant-owner/RestaurantOwnerForm";
 import RestaurantPitchSection from "@/components/restaurant-owner/RestaurantPitchSection";
 import { AppAssets } from "@/constants/app_assets";
-import { PageSectionIds } from "@/constants/app_routes";
+import { AppRoutes, PageSectionIds } from "@/constants/app_routes";
 import { AppStrings } from "@/constants/app_strings";
+import { buildPageMetadata } from "@/lib/metadata";
 
 const { restaurantOwner } = AppStrings;
 
-export const metadata: Metadata = restaurantOwner.metadata;
+export const metadata: Metadata = buildPageMetadata({ ...restaurantOwner.metadata, path: AppRoutes.restaurantOwner });
 
 export default function RestaurantOwnerPage() {
   const { hero, form } = restaurantOwner;

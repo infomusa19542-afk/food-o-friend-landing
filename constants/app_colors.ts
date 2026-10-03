@@ -9,10 +9,12 @@ export const AppColors = {
   charcoal: "#171717",
   charcoalSoft: "#222222",
   brand: "#f26b1d",
-  brandHover: "#dc5c10",
+  brandStrong: "#c24a0b",
+  brandStrongHover: "#a63f09",
   brandTint: "#fde4d0",
   cream: "#faf6f0",
   white: "#ffffff",
   muted: "#9b9b9b",
+  placeholder: "#737373",
   textDark: "#1a1a1a",
 } as const;

@@ -17,7 +17,7 @@ export const AppConfig = {
     displayName: "Food O Friend",
     legalEntityName: null as string | null,
     contactEmail: null as string | null,
-    legalLastUpdated: "3 October 2026",
+    legalLastUpdated: "4 October 2026",
   },
 
   database: {
