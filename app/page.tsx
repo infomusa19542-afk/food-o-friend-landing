@@ -6,8 +6,6 @@ import HeroSection from "@/components/home/HeroSection";
 import HowItWorksSection from "@/components/home/HowItWorksSection";
 import ProblemSolutionSection from "@/components/home/ProblemSolutionSection";
 import SafetySection from "@/components/home/SafetySection";
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
 import { getHomeContent } from "@/controllers/home.controller";
 import { getWaitlistCount } from "@/controllers/waitlist.controller";
 
@@ -19,17 +17,13 @@ export default async function HomePage() {
 
   return (
     <WaitlistCountProvider initialCount={waitlistCount}>
-      <Header />
-      <main className="flex-1">
-        <HeroSection content={content.hero} socialProof={content.socialProof} />
-        <FeatureStrip />
-        <ProblemSolutionSection problem={content.problem} solution={content.solution} />
-        <HowItWorksSection content={content.howItWorks} />
-        <SafetySection content={content.safety} />
-        <FaqSection items={content.faq} />
-        <FinalCTASection content={content.cta} />
-      </main>
-      <Footer />
+      <HeroSection content={content.hero} socialProof={content.socialProof} />
+      <FeatureStrip />
+      <ProblemSolutionSection problem={content.problem} solution={content.solution} />
+      <HowItWorksSection content={content.howItWorks} />
+      <SafetySection content={content.safety} />
+      <FaqSection items={content.faq} />
+      <FinalCTASection content={content.cta} />
     </WaitlistCountProvider>
   );
 }

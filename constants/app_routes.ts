@@ -15,6 +15,12 @@ export const SectionIds = {
   waitlist: "waitlist",
 } as const;
 
+/** Anchors on standalone pages. */
+export const PageSectionIds = {
+  registrationForm: "registration-form",
+  restaurantForm: "restaurant-form",
+} as const;
+
 export type SectionId = (typeof SectionIds)[keyof typeof SectionIds];
 
 export const toSectionHref = (id: SectionId): string => `${AppRoutes.home}#${id}`;

@@ -13,7 +13,13 @@ export const MainNavItems: readonly NavItem[] = [
   { label: navigation.faq, href: toSectionHref(SectionIds.faq) },
 ];
 
-/** Static highlight until scroll-aware navigation exists. */
+/** Footer adds links to standalone pages after the homepage sections. */
+export const FooterNavItems: readonly NavItem[] = [
+  ...MainNavItems,
+  { label: navigation.restaurants, href: AppRoutes.restaurantOwner },
+];
+
+/** Static highlight on the homepage until scroll-aware navigation exists. */
 export const ActiveNavHref = toSectionHref(SectionIds.home);
 
 export const WaitlistHref = toSectionHref(SectionIds.waitlist);

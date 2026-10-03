@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Caveat, Outfit } from "next/font/google";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
 import { AppColors } from "@/constants/app_colors";
 import { AppStrings } from "@/constants/app_strings";
 import "./globals.css";
@@ -17,7 +19,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: AppStrings.metadata.title,
+  title: { default: AppStrings.metadata.title, template: `%s | ${AppStrings.brand.name}` },
   description: AppStrings.metadata.description,
 };
 
@@ -31,7 +33,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${outfit.variable} ${caveat.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

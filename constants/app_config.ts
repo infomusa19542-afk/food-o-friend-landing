@@ -9,11 +9,24 @@ export const AppConfig = {
     bucket: "site-assets",
   },
 
+  /**
+   * Business details shown on legal pages.
+   * TODO(before launch): set the registered legal entity and a monitored contact email.
+   */
+  company: {
+    displayName: "Food O Friend",
+    legalEntityName: null as string | null,
+    contactEmail: null as string | null,
+    legalLastUpdated: "3 October 2026",
+  },
+
   database: {
     tables: {
       waitlist: "waitlist",
       siteContent: "site_content",
       faqItems: "faq_items",
+      userRegistrations: "user_registrations",
+      restaurantOwners: "restaurant_owners",
     },
     rpc: {
       waitlistCount: "get_waitlist_count",
@@ -25,20 +38,31 @@ export const AppConfig = {
     timeoutMs: 8000,
   },
 
-  waitlist: {
-    source: "website",
+  forms: {
     /** Hidden spam-trap field name. Deliberately not a common autofill name. */
     honeypotField: "company_site",
+  },
+
+  waitlist: {
+    source: "website",
     inputIds: {
       hero: "hero-waitlist-email",
       cta: "cta-waitlist-email",
     },
   },
 
+  /** Mirrored by CHECK constraints in supabase/*.sql. */
   validation: {
     emailMaxLength: 254,
     nameMaxLength: 80,
-    textMaxLength: 500,
+    shortTextMaxLength: 120,
+    addressMaxLength: 200,
+    messageMaxLength: 1000,
+    phoneMaxLength: 20,
+    phoneMinDigits: 7,
+    urlMaxLength: 200,
+    maxSelections: 8,
+    seatingCapacity: { min: 1, max: 2000 },
   },
 
   // Placeholder profile URLs until the official accounts are live.

@@ -10,6 +10,6 @@ import { parseWaitlistInput } from "@/utils/validators";
 export async function joinWaitlistAction(payload: unknown): Promise<WaitlistResponse> {
   const result = await joinWaitlist(parseWaitlistInput(payload));
   // Refresh the cached homepage so new visitors see the updated count.
-  if (result.status === "success" && result.data?.count !== null) revalidatePath(AppRoutes.home);
+  if (result.status === "success" && typeof result.data?.count === "number") revalidatePath(AppRoutes.home);
   return result;
 }

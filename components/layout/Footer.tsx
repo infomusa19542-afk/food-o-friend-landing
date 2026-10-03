@@ -2,7 +2,7 @@ import Link from "next/link";
 import BrandLogo from "@/components/common/BrandLogo";
 import Container from "@/components/common/Container";
 import Icon from "@/components/common/Icon";
-import { LegalNavItems, MainNavItems, SocialLinks } from "@/constants/app_navigation";
+import { FooterNavItems, LegalNavItems, SocialLinks } from "@/constants/app_navigation";
 import { AppStrings } from "@/constants/app_strings";
 import { currentYear } from "@/utils/formatters";
 
@@ -20,7 +20,7 @@ export default function Footer() {
 
           <nav aria-label={navigation.footerLabel}>
             <ul className="flex flex-wrap justify-center gap-x-8 gap-y-1 text-sm text-white/80">
-              {MainNavItems.map((item) => (
+              {FooterNavItems.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className={LINK_CLASSES}>
                     {item.label}

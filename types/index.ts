@@ -12,8 +12,11 @@ export interface ActionResult<TData = undefined> {
   status: ActionStatus;
   message: string;
   data?: TData;
-  fieldErrors?: Record<string, string>;
+  fieldErrors?: FieldErrors;
 }
+
+/** Field name → user-facing validation message. */
+export type FieldErrors = Record<string, string>;
 
 export interface NavItem {
   label: string;

@@ -4,8 +4,8 @@ import type { ActionResult } from "@/types";
 export interface WaitlistInput {
   email: string;
   name?: string;
-  /** Honeypot field — real users leave it empty. */
-  website?: string;
+  /** Spam trap — real users leave it empty. */
+  honeypot?: string;
 }
 
 /** Validated, normalized payload inserted into the `waitlist` table. */
