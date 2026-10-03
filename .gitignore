@@ -33,3 +33,6 @@ next-env.d.ts
 
 # misc
 *.pem
+site-assets/
+uploaded_urls.json
+.env.local

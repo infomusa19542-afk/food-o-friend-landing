@@ -1,77 +1,45 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
-
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [count, setCount] = useState<number>(0);
-  const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  const loadCount = async () => {
-    const { data, error } = await supabase.rpc("get_waitlist_count");
-
-    if (!error && data !== null) {
-      setCount(Number(data));
-    }
-  };
-
-  useEffect(() => {
-    loadCount();
-  }, []);
-
-  const joinWaitlist = async (e: FormEvent) => {
-    e.preventDefault();
-
-    if (!email.trim()) return;
-
-    setLoading(true);
-    setMessage("");
-
-    const { error } = await supabase.from("waitlist").insert({
-      email: email.trim().toLowerCase(),
-      source: "website",
-    });
-
-    if (error) {
-      if (error.code === "23505") {
-        setMessage("You're already on the waitlist.");
-      } else {
-        setMessage(error.message);
-      }
-
-      setLoading(false);
-      return;
-    }
-
-    setEmail("");
-    setMessage("You're on the waitlist!");
-    await loadCount();
-    setLoading(false);
-  };
+  const imageUrl =
+    "https://nipbfuwpxuoibuornhfd.supabase.co/storage/v1/object/public/site-assets/food.png";
 
   return (
-    <main style={{ padding: 40 }}>
+    <main
+      style={{
+        minHeight: "100vh",
+        background: "#111",
+        color: "#fff",
+        padding: "40px",
+      }}
+    >
       <h1>Food O Friend</h1>
 
-      <p>{count} people have joined the waitlist.</p>
+      <p style={{ marginTop: "12px", marginBottom: "24px" }}>
+        Testing Supabase Storage image
+      </p>
 
-      <form onSubmit={joinWaitlist}>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter your email"
-          required
-        />
+      <img
+        src={imageUrl}
+        alt="Food O Friend test"
+        style={{
+          width: "100%",
+          maxWidth: "900px",
+          height: "auto",
+          display: "block",
+          borderRadius: "16px",
+        }}
+      />
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Joining..." : "Join Waitlist"}
-        </button>
-      </form>
-
-      {message && <p>{message}</p>}
+      <p
+        style={{
+          marginTop: "20px",
+          wordBreak: "break-all",
+          opacity: 0.7,
+        }}
+      >
+        {imageUrl}
+      </p>
     </main>
   );
 }
